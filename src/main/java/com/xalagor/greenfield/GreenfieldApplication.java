@@ -2,7 +2,6 @@ package com.xalagor.greenfield;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -24,7 +23,7 @@ public class GreenfieldApplication extends Application {
 
         initializeGrid();
 
-        Scene scene = new Scene(gridPane, 500, 500);
+        javafx.scene.Scene scene = new javafx.scene.Scene(gridPane, 500, 500);
         primaryStage.setTitle("Island Simulation");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -47,11 +46,11 @@ public class GreenfieldApplication extends Application {
 
         for (int x = 0; x < island.getWidth(); x++) {
             for (int y = 0; y < island.getHeight(); y++) {
-                Location location = island.getLocation(x, y);
+                Scene scene = island.getLocation(x, y);
                 String emoji = "🌿"; // Растения по умолчанию
 
-                if (!location.getAnimals().isEmpty()) {
-                    emoji = getEmojiForAnimal(location.getAnimals().get(0));
+                if (!scene.getAnimals().isEmpty()) {
+                    emoji = getEmojiForAnimal(scene.getAnimals().get(0));
                 }
 
                 Label label = new Label(emoji);
